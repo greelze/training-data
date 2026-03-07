@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sensor Sync Dashboard</title>
+    <link rel="stylesheet" href="training.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <div class="header-text">
+                <h1>Sensor Monitor</h1>
+                <p id="scheduleStatus">Initialising...</p>
+            </div>
+            <div class="header-actions">
+                <button id="darkModeToggle" class="icon-btn">🌙</button>
+                <button id="exportBtn">Export Data</button>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card temp-card"><h3>Temp</h3><p id="currTemp">--°C</p></div>
+            <div class="stat-card hum-card"><h3>Hum</h3><p id="currHum">--%</p></div>
+            <div class="stat-card uv-card"><h3>UV Index</h3><p id="currUV">--</p></div>
+        </div>
+
+        <div class="chart-controls">
+            <button class="view-btn active" data-view="all" style="--btn-color: #2ecc71;">All</button>
+            <button class="view-btn" data-view="temp" style="--btn-color: #e74c3c;">Temp</button>
+            <button class="view-btn" data-view="hum" style="--btn-color: #3498db;">Hum</button>
+            <button class="view-btn" data-view="uv" style="--btn-color: #9b59b6;">UV</button>
+        </div>
+
+        <div class="chart-container"><canvas id="realTimeChart"></canvas></div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Active</th><th>Location</th><th>Temp</th><th>Hum</th><th>UV</th></tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr id="row-A"><td><input type="radio" name="loc" disabled></td><td>Loc A (1PM-7PM)</td><td class="temp">--</td><td class="hum">--</td><td class="uv">--</td></tr>
+                    <tr id="row-B"><td><input type="radio" name="loc" disabled></td><td>Loc B (7PM-1M)</td><td class="temp">--</td><td class="hum">--</td><td class="uv">--</td></tr>
+                    <tr id="row-C"><td><input type="radio" name="loc" disabled></td><td>Loc C (1AM-7AM)</td><td class="temp">--</td><td class="hum">--</td><td class="uv">--</td></tr>
+                    <tr id="row-D"><td><input type="radio" name="loc" disabled></td><td>Loc D (7AM-1PM)</td><td class="temp">--</td><td class="hum">--</td><td class="uv">--</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="training.js"></script>
+</body>
+</html>

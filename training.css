@@ -1,0 +1,75 @@
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-main: #1a1a1a;
+    --border-color: #eeeeee;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #e0e0e0;
+    --border-color: #333333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0; padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.header-actions { display: flex; gap: 10px; }
+
+.icon-btn {
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    padding: 8px; border-radius: 8px; cursor: pointer; color: var(--text-main);
+}
+
+#exportBtn {
+    background: var(--text-main); color: var(--bg-color);
+    border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;
+}
+
+#exportBtn:disabled { opacity: 0.5; cursor: wait; }
+
+.stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px; margin-bottom: 25px;
+}
+
+.stat-card { padding: 20px; border-radius: 12px; text-align: center; color: white; }
+.temp-card { background: #e74c3c; }
+.hum-card { background: #3498db; }
+.uv-card { background: #9b59b6; }
+
+.chart-controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+.view-btn {
+    padding: 8px 16px; border: 2px solid var(--btn-color);
+    background: transparent; border-radius: 20px; color: var(--text-main); font-weight: 600; cursor: pointer;
+}
+.view-btn.active { background: var(--btn-color); color: white; }
+
+.chart-container { height: 320px; width: 100%; margin-bottom: 25px; }
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; min-width: 550px; border-collapse: collapse; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+
+.active-row { background-color: rgba(46, 204, 113, 0.15) !important; font-weight: bold; }
+
+@media (max-width: 600px) {
+    header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .header-actions { width: 100%; }
+    #exportBtn { flex-grow: 1; }
+}
